@@ -1,0 +1,49 @@
+# Dependency directories
+/node_modules
+
+# Environment variables files
+/.env
+/.env.test
+/.env.production
+
+# Build output
+/build
+/dist
+
+# Logs
+/logs
+
+# OS or editor specific files
+.DS_Store
+Thumbs.db
+*.log
+
+# Ignore dotenv override file
+.env.override
+
+# IDE or editor settings
+.vscode/
+.idea/
+
+# npm debug log
+npm-debug.log*
+
+# Yarn Integrity file
+.yarn-integrity
+
+# macOS
+.DS_Store
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Production build
+/build
+
+# Testing
+/coverage
+
+# Runtime data
+.pnp.*
