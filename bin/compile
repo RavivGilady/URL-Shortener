@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# bin/compile
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+echo "-----> Copying files from Backend to build directory"
+# Remove everything in the build directory first
+rm -rf "$BUILD_DIR"/*
+
+# Copy all files from the Backend directory to the build directory
+cp -r Backend/* "$BUILD_DIR"
+
+echo "-----> Build process complete"
