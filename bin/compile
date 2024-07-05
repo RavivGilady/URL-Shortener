@@ -1,0 +1,6 @@
+#!/bin/bash
+BUILD_DIR=$1
+echo "-----> Copying files from Backend to build directory"
+rm -rf "$BUILD_DIR"/*
+cp -r Backend/* "$BUILD_DIR"
+echo "-----> Build process complete"
