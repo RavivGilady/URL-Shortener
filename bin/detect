@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Inline Buildpack"
+exit 0
