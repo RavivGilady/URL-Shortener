@@ -1,0 +1,3 @@
+bin/detect export-ignore eol=lf
+bin/compile export-ignore eol=lf
+bin/release export-ignore eol=lf
