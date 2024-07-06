@@ -13,7 +13,7 @@ async function connectDB () {
         logger.info(`MongoDB Connected to ${process.env.NODE_ENV} Database`);
         return conn;
     }).catch((error) => {
-        logger.error(`MongoDB connection to ${process.env.NODE_ENV} error:', error`);
+        logger.error(`MongoDB connection to ${process.env.NODE_ENV} error:', ${error}`);
         process.exit(1);
     });
     return connection;
