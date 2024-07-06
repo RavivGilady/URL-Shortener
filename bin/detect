@@ -1,5 +1,5 @@
 #!/bin/sh
 
 
- echo "Hello From Buildpack"
+echo "Hello From Buildpack"
 exit 0
