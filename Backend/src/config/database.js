@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
+const socksAgent = require('socks-proxy-agent');
 const logger = require('../config/logger');
+
 
 let connection = null;
 
-const dbURI = process.env.NODE_ENV === 'test' ? process.env.TEST_DB_URI : process.env.DB_URI;
+const dbURI = getDatabaseURI();
 logger.debug(`db uri: ${dbURI}`)
 async function connectDB () {
 
     if (connection) return connection;
-    connection = mongoose.connect(dbURI, {
-    }).then((conn) => {
+    options = getOptions();
+    connection = mongoose.connect(dbURI, options).then((conn) => {
         logger.info(`MongoDB Connected to ${process.env.NODE_ENV} Database`);
         return conn;
     }).catch((error) => {
@@ -34,5 +36,29 @@ async function dropTable() {
         await mongoose.connection.dropCollection;
         logger.info('MongoDB dropped table');
     }
+}
+
+function getDatabaseURI(){
+    if(process.env.NODE_ENV === 'test'){
+        logger.info("Using Test Database URI")
+        return process.env.TEST_DB_URI;
+    }
+    if(process.env.NODE_ENV === 'development'){
+        logger.info("Using development Database URI")
+        return process.env.DEVELOPMENT_DB_URI;
+    }
+    if(process.env.NODE_ENV === 'production'){
+        logger.info("Using Production Database URI")
+        return process.env.PRODUCTION_DB_URI;
+    }
+}
+function getOptions(){
+    if(process.env.NODE_ENV === 'production'){
+        return ({
+            server: { proxy: new socksAgent(process.env.FIXIE_SOCKS_HOST) }
+        });
+    }
+    else 
+    return ({});
 }
 module.exports = { connectDB, disconnectDB, dropTable };
