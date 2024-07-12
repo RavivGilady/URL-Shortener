@@ -20,7 +20,11 @@ exports.shortenUrl = async (req, res) => {
         logger.debug(`Created new url for address ${originalUrl}`)
         res.status(201).json({ shortUrl });
     } catch (error) {
-        logger.error(`Error for creating:${originalUrl}, error: ${error}`); // Log error for debugging
+        logger.error(`Error for creating: originalUrl:${originalUrl},
+        shortUrl:${shortUrl},
+        customName:${customName},
+        userId:${userId},
+         error: ${error}`); // Log error for debugging
         res.status(500).json({ error: 'Server error' });
     }
 };
