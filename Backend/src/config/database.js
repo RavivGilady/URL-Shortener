@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const socksAgent = require('socks-proxy-agent');
 const logger = require('../config/logger');
 
 
@@ -53,10 +52,15 @@ function getDatabaseURI(){
     }
 }
 function getOptions(){
-    if(typeof process.env.FIXIE_SOCKS_HOST !=undefined){
+    if(typeof process.env.FIXIE_SOCKS_HOST != "undefined"){
+        var fixieData = process.env.FIXIE_SOCKS_HOST.split(new RegExp('[/(:\\/@/]+'));
+
         return ({
-            server: { proxy: new socksAgent(process.env.FIXIE_SOCKS_HOST) }
-        });     
+            proxyUsername: fixieData[0],
+            proxyPassword: fixieData[1],
+            proxyHost: fixieData[2],
+            proxyPort: fixieData[3]
+           });     
     }
     else 
     return ({});
