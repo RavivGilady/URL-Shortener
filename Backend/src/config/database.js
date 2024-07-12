@@ -53,10 +53,10 @@ function getDatabaseURI(){
     }
 }
 function getOptions(){
-    if(process.env.NODE_ENV === 'production'){
+    if(typeof process.env.FIXIE_SOCKS_HOST !=undefined){
         return ({
             server: { proxy: new socksAgent(process.env.FIXIE_SOCKS_HOST) }
-        });
+        });     
     }
     else 
     return ({});
