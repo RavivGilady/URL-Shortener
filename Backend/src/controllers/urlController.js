@@ -21,7 +21,6 @@ exports.shortenUrl = async (req, res) => {
         res.status(201).json({ shortUrl });
     } catch (error) {
         logger.error(`Error for creating: originalUrl:${originalUrl},
-        shortUrl:${shortUrl},
         customName:${customName},
         userId:${userId},
          error: ${error}`); // Log error for debugging
