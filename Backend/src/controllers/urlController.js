@@ -5,7 +5,8 @@ const logger = require('../config/logger');
 // Controller to handle URL shortening
 exports.shortenUrl = async (req, res) => {
     const { originalUrl, customName } = req.body;
-    const userId = req.userId; 
+    const userId = req.userId;
+    logger.debug(`req: ${req.userId}`)
     try {
         if (customName) {
             const existingCustomName = await URL.findOne({ customName });

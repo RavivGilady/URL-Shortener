@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-    const logger = require('../config/logger');
+const logger = require('../config/logger');
 
 // Middleware to verify JWT token
 exports.verifyToken = (req, res, next) => {
@@ -10,7 +10,7 @@ exports.verifyToken = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.userId = decoded._id;
+        req.userId = decoded.userId;
          next();
     } catch (error) {
         logger.error(`Error was thrown to verify token:${error}`)
