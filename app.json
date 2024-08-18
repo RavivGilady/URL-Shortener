@@ -1,9 +1,17 @@
 {
     "environments": {
-      "test": {
-        "scripts": {
-          "test": "cd Backend; npm test"
+        "test": {
+            "scripts": {
+                "test": "cd Backend; npm test"
+            },
+            "buildpacks": [
+                {
+                    "url": "https://github.com/RavivGilady/heroku-buildpack-debug"
+                },
+                {
+                    "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+                }
+            ]
         }
-      }
     }
-  }
+}
