@@ -8,7 +8,7 @@ const testUser = {
     username: 'testuser',
     email: 'testuser@example.com',
     password: 'password123', // Plain text password for seeding, hashed in the seeding script
-    tokens: [{ token: jwt.sign({ _id: testUserId }, process.env.JWT_SECRET, { expiresIn: '1h' }) }]
+    tokens: [{ token: jwt.sign({ userId: testUserId }, process.env.JWT_SECRET, { expiresIn: '1h' }) }]
 };
 
 const hashedTestUser = async () => {    
