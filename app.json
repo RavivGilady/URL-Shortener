@@ -1,0 +1,9 @@
+{
+    "environments": {
+      "test": {
+        "scripts": {
+          "test": "cd Backend; npm test"
+        }
+      }
+    }
+  }
