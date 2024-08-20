@@ -1,4 +1,0 @@
-#!/bin/sh
-
-echo "Hello From Buildpack"
-exit 0
